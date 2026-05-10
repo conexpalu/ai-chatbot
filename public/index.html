@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Chatbot</title>
+
+  <style>
+
+    body{
+      font-family: Arial;
+      max-width:700px;
+      margin:40px auto;
+      background:#f4f4f4;
+    }
+
+    h1{
+      text-align:center;
+    }
+
+    #chat{
+      background:white;
+      border:1px solid #ccc;
+      border-radius:10px;
+      height:400px;
+      overflow:auto;
+      padding:20px;
+      margin-bottom:10px;
+    }
+
+    input{
+      width:80%;
+      padding:10px;
+    }
+
+    button{
+      padding:10px;
+      background:blue;
+      color:white;
+      border:none;
+      cursor:pointer;
+    }
+
+    .user{
+      color:blue;
+      margin-bottom:10px;
+    }
+
+    .bot{
+      color:green;
+      margin-bottom:10px;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<h1>🤖 AI Customer Service</h1>
+
+<div id="chat"></div>
+
+<input type="text" id="message" placeholder="Tulis pesan">
+
+<button onclick="sendMessage()">
+Kirim
+</button>
+
+<script>
+
+function sendMessage(){
+
+  const input = document.getElementById('message');
+  const chat = document.getElementById('chat');
+
+  const message = input.value;
+
+  if(message === ""){
+    return;
+  }
+
+  chat.innerHTML += `
+    <p class="user">
+      <b>Kamu:</b> ${message}
+    </p>
+  `;
+
+  let reply = "";
+
+  if(message.toLowerCase().includes("halo")){
+    reply = "Halo juga 😄 Ada yang bisa saya bantu?";
+  }
+  else if(message.toLowerCase().includes("laptop")){
+    reply = "Kami merekomendasikan laptop ASUS dan Lenovo 👍";
+  }
+  else if(message.toLowerCase().includes("harga")){
+    reply = "Harga produk mulai dari 3 jutaan 😄";
+  }
+  else if(message.toLowerCase().includes("terima kasih")){
+    reply = "Sama-sama 😄 Senang bisa membantu.";
+  }
+  else{
+    reply = "Terima kasih sudah menghubungi customer service 😄";
+  }
+
+  chat.innerHTML += `
+    <p class="bot">
+      <b>Bot:</b> ${reply}
+    </p>
+  `;
+
+  input.value = '';
+
+}
+
+</script>
+
+</body>
+</html>
